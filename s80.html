@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S80</title>
+    <style>
+        header {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            font-family: "Playfair Display", serif;
+            font-weight: 600;
+            font-size: 18px;
+            position: fixed;
+            z-index: 777;
+            background-color: #232222;
+            top:0;
+            left: 0;
+            width: 1550px;
+        }
+
+        body {
+            background: #ededed
+        }
+
+        header h1 {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        header h1 img {
+            width: 50px;
+            margin-top: 12px;
+            margin-left: 10px;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        header div button {
+            color: white;
+            padding-left: 840px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+            font-family: "Playfair Display", serif;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .expand-image-container {
+            width: 80vw;
+            max-width: 1600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #ededed;
+            box-sizing: border-box;
+        }
+
+        .expand-image {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition:
+                object-position 0.8s cubic-bezier(.4, 0, .2, 1),
+                clip-path 0.8s cubic-bezier(.4, 0, .2, 1);
+            object-position: center 50%;
+        }
+
+        .expand-image.cropped {
+            clip-path: inset(0 20% 0 20%);
+        }
+
+        .expand-image.expanded {
+            clip-path: inset(0 0 0 0);
+        }
+
+        .features-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 80px auto;
+            max-width: 1400px;
+            padding: 0 40px;
+        }
+
+        .feature {
+            background: #ededed;
+            border-radius: 8px;
+            padding: 24px 18px 18px 18px;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-sizing: border-box;
+        }
+
+        .feature img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 4px;
+            margin-bottom: 18px;
+            align-self: center;
+        }
+
+        .feature h3 {
+            font-family: 'Playfair Display', Arial, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            letter-spacing: 0.02em;
+            color: #222;
+            text-transform: none;
+        }
+
+        .feature p {
+            font-family: Arial, sans-serif;
+            font-size: 0.92rem;
+            color: #222;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .f80-engine-expand-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 100px 100px 30px;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .f80-engine-img {
+            width: 100%;
+            max-width: 1300px;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: left center;
+            transition: clip-path 0.8s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .f80-engine-img.cropped {
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .f80-engine-img.expanded {
+            clip-path: inset(0 0 0 0);
+        }
+.gallery-tab {
+    color: #aaa;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding-bottom: 4px;
+    cursor: pointer;
+    border-bottom: none;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+.gallery-tab.active {
+    color: #ff2d1b !important;
+    border-bottom: 3px solid #ff2d1b;
+}
+        @media (max-width: 700px) {
+            .f80-engine-expand-container {
+                max-width: 100vw;
+                min-height: 200px;
+            }
+
+            .f80-engine-img {
+                max-width: 100vw;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .features-section {
+                flex-direction: column;
+                gap: 32px;
+                padding: 0 10px;
+            }
+
+            .feature img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><img src="img/C-12832__49976.png" alt=""></h1>
+        <nav>
+            <ul>
+                <li><a href="">Model</a></li>
+                <li><a href="">Racing</a></li>
+                <li><a href="">Experiences</a></li>
+                <li><a href="">About Us</a></li>
+            </ul>
+        </nav>
+        <div>
+            <button>Search</button>
+        </div>
+    </header>
+
+    <div style="width: 100wh; height: 98vh;">
+        <img style="z-index: 2;position: fixed;top: 77px;"
+            src="img/670e50d92140460056663710-ferrari-f80-logo-line-up-grey.avif" alt="">
+        <img style="position: absolute;width: 100%;top: 0;left: 0;" src="img/scrollreel-149" alt="">
+    </div>
+    <div
+        style="background: #ededed; width: 100vw; margin-left: calc(-50vw + 50%); margin-top: 60px; margin-bottom: 60px;">
+        <h1 style="
+        font-family: 'Playfair Display', Arial, sans-serif;
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: #111;
+        text-align: center;
+        padding: 80px 0 80px 0;
+        margin: 100px 0;
+        letter-spacing: 0.5px;
+    ">
+            Ferrari F80: the new supercar from the<br>Prancing Horse
+        </h1>
+        <div class="expand-image-container">
+            <img id="expand-image" class="expand-image"
+                src="img/670e179521404600566636d2-ferrari-f80-photo-reveal-website-desk.avif" alt="">
+        </div>
+        <h1 style="
+        font-family: 'Playfair Display', Arial, sans-serif;
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: #111;
+        text-align: center;
+        padding: 80px 0 80px 0;
+        margin: 100px 0;
+        letter-spacing: 0.5px;
+    ">
+            The Ferrari F80 is conceived to deliver the ultimate in performance without penalising driving comfort.
+        </h1>
+
+        <div class="features-section">
+            <div class="feature">
+                <img src="s80/Screenshot 2025-06-11 032530.png" alt="CCM-R PLUS BRAKE SYSTEM">
+                <h3>CCM-R PLUS BRAKE SYSTEM</h3>
+                <p>
+                    Co-developed with Brembo and an all-time first for a road-going application, CCM-R Plus uses
+                    longer carbon fibres to significantly improve mechanical strength (30%) and thermal conductivity
+                    (30%) over previous generation solutions, and braking surfaces coated with a layer of silicon
+                    carbide (SiC) to offer incredible wear resistance and shorter bedding-in times.
+                </p>
+            </div>
+            <div class="feature">
+                <img src="s80/Screenshot 2025-06-11 032806.png" alt="MGU-K ELECTRIC MOTOR">
+                <h3>MGU-K ELECTRIC MOTOR</h3>
+                <p>
+                    The electric motor used for the F80 is the first unit developed, tested and manufactured
+                    entirely by Ferrari at Maranello. The design of the electric motor draws directly from Ferrari’s
+                    experience in racing, specifically the flat-coil stator technology, anti-rotor configuration,
+                    and magnet retention system in carbon fibre are all solutions derived from the design used in
+                    Formula 1.
+                </p>
+            </div>
+            <div class="feature">
+                <img src="s80/Screenshot 2025-06-11 032814.png" alt="S-DUCT">
+                <h3>S-DUCT</h3>
+                <p>
+                    The carbon-fibre front bonnet of the F80 features an S-Duct consisting of a fixed element
+                    connecting the two front wings. Inside the feature are two flaps following the main profile to
+                    complete the triplane wing configuration with curvature and blower slot clearly inspired by the
+                    488P.
+                </p>
+
+            </div>
+
+        </div>
+        <div style=" width: 100vw; margin-left: calc(-50vw + 50%); padding: 80px 0 60px 0;">
+            <h1 style="
+        text-align: center;
+        color: #ff2d1b;
+        font-family: fantasy;
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 36px;
+    ">
+                PERFORMANCE
+            </h1>
+            <div style="
+        text-align: center;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 2.3rem;
+        font-weight: 600;
+        color: #111;
+        margin-bottom: 60px;
+        line-height: 1.15;
+    ">
+                With <b>1200 horsepower</b>, this is the most powerful road-going Ferrari ever created.<br>
+                <b>1050 kg</b> of downforce push the car firmly onto the ground.
+            </div>
+            <div style="
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    ">
+                <div style="text-align: center; min-width: 180px;">
+                    <div style="font-size: 3rem; font-weight: 700; color: #111;">V6</div>
+                    <div style="font-size: 1rem; color: #8d9297; letter-spacing: 2px; margin-top: 8px;">POWERTRAIN</div>
+                </div>
+                <div style="text-align: center; min-width: 180px;">
+                    <div style="font-size: 3rem; font-weight: 700; color: #111;">5.75 <span
+                            style="font-size:1.5rem;">s</span></div>
+                    <div style="font-size: 1rem; color: #8d9297; letter-spacing: 2px; margin-top: 8px;">0-200 KM/H</div>
+                </div>
+                <div style="text-align: center; min-width: 180px;">
+                    <div style="font-size: 3rem; font-weight: 700; color: #111;">300 <span
+                            style="font-size:1.5rem;">cv/l</span></div>
+                    <div style="font-size: 1rem; color: #8d9297; letter-spacing: 2px; margin-top: 8px;">SPECIFIC POWER
+                        OUTPUT</div>
+                </div>
+                <div style="text-align: center; min-width: 180px;">
+                    <div style="font-size: 3rem; font-weight: 700; color: #111;">1200</div>
+                    <div style="font-size: 1rem; color: #8d9297; letter-spacing: 2px; margin-top: 8px;">HORSEPOWER</div>
+                </div>
+            </div>
+            <div class="f80-engine-expand-container">
+                <img id="f80-engine-img" class="f80-engine-img cropped" src="s80/2025-Ferrari-F80-engine.avif"
+                    alt="Ferrari F80 Engine">
+            </div>
+            <div style="width: 500px;padding-left: 100px;" class="feature">
+
+                <h3>POWERTRAIN</h3>
+                <p>
+                    The three-litre 120° V6 F163CF engine of the F80 produces a peak power of 900 HP, for a specific
+                    power of 300 hp/l, to which the electric front axle (e-4WD) and motor (MGU-K) of the hybrid system
+                    add another 300 hp. The link with motorsports is strong: the architecture of this engine and many of
+                    its components are derived from the powerplant of the 499P which won the 2023 and 2024 editions of
+                    the 24 Hours of Le Mans.
+                </p>
+            </div>
+            <div style=" width: 100vw; margin-left: calc(-50vw + 50%); padding: 80px 0 60px 0;">
+                <h1 style="
+        text-align: center;
+        color: #ff2d1b;
+        font-family: fantasy;
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 36px;
+    ">
+                    DESIGN
+                </h1>
+                <div style="
+        text-align: center;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 2.3rem;
+        font-weight: 600;
+        color: #111;
+        margin-bottom: 60px;
+        line-height: 1.15;
+        width: 75%;
+        margin: auto auto;
+    ">
+                    The Ferrari F80 reconciles the functional needs of performance and high technology in an all-new
+                    design language which is nonetheless steeped in Ferrari DNA.
+                </div>
+                <div class="f80-engine-expand-container">
+                    <img id="f80-design-img" class="f80-engine-img cropped"
+                        src="s80/2025-Ferrari-F80-rear-quarter-static.avif" alt="Ferrari F80 Rear Quarter">
+                </div>
+                <div style="background:#ededed; padding:10px 0 32px 0;">
+                    <div style="width: 500px;padding-left: 100px; padding-top: 20px;" class="feature">
+                        <h2>EXTERIOR DESIGN</h2>
+                        <p>
+                            The F80 has a strongly futuristic visual impact with unmistakeable references to aerospace.
+                            The architecture is defined by a dihedral cross section with its two bottom corners firmly
+                            planted on the wheels. From the side view, the rear section has a sculpted flow that
+                            emphasises the muscularity of the entire rear wing. The front section of the car is defined
+                            by more architectural elements: the wheelarch ends with a vertical panel that stands proud
+                            of the door, paying homage to the visual language of the F40.
+                        </p>
+                    </div>
+                    <div style="width: 100wh;">
+                        <img style=" width: 100%;" src="s80/ferrari-f80-interior-focus-seat-2s.jpg" alt="">
+                    </div>
+                </div>
+
+
+
+                <div style="background: #ededed; width: 100vw; margin-left: calc(-50vw + 50%); padding: 80px 0 60px 0;">
+                    <h1 style="
+        text-align: center;
+        color: #ff2d1b;
+        font-family: fantasy;
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 36px;
+    ">
+                        ARCHITECTURE
+                    </h1>
+                    <div style="
+        text-align: center;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 2.3rem;
+        font-weight: 600;
+        color: #111;
+        margin-bottom: 60px;
+        line-height: 1.15;
+        width: 75%;
+        margin: auto auto;
+    ">
+                        The chassis of the Ferrari F80 has been designed completely from the ground up to meet the
+                        ambitious performance targets set for the car.
+                    </div>
+                    <img style="margin: 150px 150px 30px; width: 80%; " src="s80/Screenshot 2025-06-11 050301.png"
+                        alt="">
+                    <div style="
+        max-width:500px;
+        margin:0 110px;
+        background:#ededed;
+        font-family:'Montserrat', Arial, sans-serif;
+        color:#111;
+        padding:24px 32px;
+        border-radius:8px;
+    ">
+                        <h2 style="
+            font-family:'Playfair Display', Arial, sans-serif;
+            font-size:1.3rem;
+            font-weight:700;
+            margin:0 0 12px 0;
+            letter-spacing:0.02em;
+            color:#222;
+            text-transform:none;
+        ">SUSPENSION SYSTEM</h2>
+                        <p style="font-size:1.08rem; margin:0;">
+                            The Ferrari active suspension system is undoubtedly one of the showpieces of the advanced
+                            vehicle dynamics technologies implemented on the F80, and has been re-engineered from the
+                            ground up compared with the version used on the Ferrari Purosangue to tailor it to the
+                            supercar soul of this car.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="background:#ededed; padding:40px 0 60px 0;">
+                <div style="max-width:1700px; margin:0 auto;">
+                    <div style="display:flex; align-items:center; gap:32px; margin-bottom:36px;">
+                        <span
+                            style="color:#ff2d1b; font-family:'Montserrat',Arial,sans-serif; font-size:1.3rem; font-weight:700;">5</span>
+                        <span
+                            style="height:2px; width:40px; background:#ff2d1b; display:inline-block; margin-right:10px;"></span>
+                        <span
+                            style="color:#ff2d1b; font-family:'Montserrat',Arial,sans-serif; font-size:1.1rem; font-weight:500; letter-spacing:1px;">MEDIA
+                            GALLERY</span>
+                    </div>
+                    <div style="display:flex; justify-content:center; gap:60px; align-items:center;">
+                        <span style="font-size:2rem; color:#aaa; cursor:pointer;">&#x2039;</span>
+                        <div style="flex:1;">
+                            <!-- PHOTOS -->
+                            <div class="gallery-section gallery-photos"
+                                style="display:flex; justify-content:space-between; gap:40px;">
+                                <div
+                                    style="background:#111; border-radius:2px; overflow:hidden; width:100%; max-width:420px; position:relative;">
+                                    <img src="s80/2025-Ferrari-F80-front-static.avif" alt="Ferrari F80 Photo 1"
+                                        style="width:100%; display:block;">
+                                    <div style="position:absolute; bottom:18px; left:0; width:100%; text-align:center;">
+                                        <span
+                                            style="color:#fff; font-family:'Montserrat',Arial,sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:1px; text-shadow:0 2px 8px #000;">F80
+                                            - PHOTO 1</span>
+                                    </div>
+                                </div>
+                                <div
+                                    style="background:#111; border-radius:2px; overflow:hidden; width:100%; max-width:420px; position:relative;">
+                                    <img src="s80/2025-Ferrari-F80-front-static-doors-up.avif" alt="Ferrari F80 Photo 2"
+                                        style="width:100%; display:block;">
+                                    <div style="position:absolute; bottom:18px; left:0; width:100%; text-align:center;">
+                                        <span
+                                            style="color:#fff; font-family:'Montserrat',Arial,sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:1px; text-shadow:0 2px 8px #000;">F80
+                                            - PHOTO 2</span>
+                                    </div>
+                                </div>
+                                <div
+                                    style="background:#111; border-radius:2px; overflow:hidden; width:100%; max-width:420px; position:relative;">
+                                    <img src="s80/2025-Ferrari-F80-rear-quarter-static.avif" alt="Ferrari F80 Photo 3"
+                                        style="width:100%; display:block;">
+                                    <div style="position:absolute; bottom:18px; left:0; width:100%; text-align:center;">
+                                        <span
+                                            style="color:#fff; font-family:'Montserrat',Arial,sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:1px; text-shadow:0 2px 8px #000;">F80
+                                            - PHOTO 3</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- AUDIOS -->
+                            <div class="gallery-section gallery-audios"
+                                style="display:none; justify-content:space-between; gap:40px;">
+                                <div
+                                    style="background:#111; border-radius:2px; overflow:hidden; width:100%; max-width:420px; position:relative; display:flex; align-items:center; justify-content:center; height:300px;">
+                                    <audio controls style="width:90%;">
+                                        <source src="s80/acceleration-1-6916.mp3" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                        <span style="font-size:2rem; color:#aaa; cursor:pointer;">&#x203A;</span>
+                    </div>
+                    <div style="display:flex; justify-content:center; gap:40px; margin-top:36px;">
+                        <span class="gallery-tab active" data-gallery="photos">PHOTOS</span>
+                        <span class="gallery-tab" data-gallery="audios">AUDIOS</span>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // This JS is for the hero image only
+                const img = document.getElementById('expand-image');
+                const container = img.parentElement;
+
+                function handleScroll() {
+                    const rect = container.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    const windowCenter = windowHeight / 2;
+                    const imgCenter = rect.top + rect.height / 2;
+
+                    if (Math.abs(imgCenter - windowCenter) < 1200) {
+                        img.classList.add('expanded');
+                        img.classList.remove('cropped');
+                    } else {
+                        img.classList.remove('expanded');
+                        img.classList.add('cropped');
+                    }
+                }
+                // Engine image scroll effect
+                (function () {
+                    const engineImg = document.getElementById('f80-engine-img');
+                    const engineContainer = engineImg.parentElement;
+
+                    function handleEngineScroll() {
+                        const rect = engineContainer.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const windowCenter = windowHeight / 2;
+                        const imgCenter = rect.top + rect.height / 2;
+
+                        if (Math.abs(imgCenter - windowCenter) < 700) {
+                            engineImg.classList.add('expanded');
+                            engineImg.classList.remove('cropped');
+                        } else {
+                            engineImg.classList.remove('expanded');
+                            engineImg.classList.add('cropped');
+                        }
+                    }
+
+                    window.addEventListener('scroll', handleEngineScroll);
+                    window.addEventListener('resize', handleEngineScroll);
+                    handleEngineScroll();
+                })();
+                // Design image scroll effect
+                (function () {
+                    const designImg = document.getElementById('f80-design-img');
+                    if (!designImg) return;
+                    const designContainer = designImg.parentElement;
+
+                    function handleDesignScroll() {
+                        const rect = designContainer.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const windowCenter = windowHeight / 2;
+                        const imgCenter = rect.top + rect.height / 2;
+
+                        if (Math.abs(imgCenter - windowCenter) < 700) {
+                            designImg.classList.add('expanded');
+                            designImg.classList.remove('cropped');
+                        } else {
+                            designImg.classList.remove('expanded');
+                            designImg.classList.add('cropped');
+                        }
+                    }
+
+                    window.addEventListener('scroll', handleDesignScroll);
+                    window.addEventListener('resize', handleDesignScroll);
+                    handleDesignScroll();
+                })();
+                window.addEventListener('scroll', handleScroll);
+                window.addEventListener('resize', handleScroll);
+                handleScroll();
+
+                // Gallery tab switching (now only PHOTOS and AUDIOS)
+                document.querySelectorAll('.gallery-tab').forEach(tab => {
+                    tab.addEventListener('click', function () {
+                        document.querySelectorAll('.gallery-tab').forEach(t => {
+                            t.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        document.querySelectorAll('.gallery-section').forEach(sec => sec.style.display = 'none');
+                        document.querySelector('.gallery-' + this.dataset.gallery).style.display = 'flex';
+                    });
+                });
+            </script>
+
+</body>
+
+</html>

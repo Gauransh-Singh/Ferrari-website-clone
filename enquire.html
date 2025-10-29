@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enquire</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Playfair Display', Arial, sans-serif;
+            background: #fff;
+            color: #111;
+            margin: 0;
+            padding: 0;
+        }
+        .enquire-container {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px 40px 20px;
+        }
+        .enquire-container h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .enquire-container p {
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+        .enquire-form label {
+            font-size: 0.95rem;
+            color: #222;
+            margin-bottom: 2px;
+            display: block;
+            font-weight: 400;
+        }
+        .enquire-form input[type="text"],
+        .enquire-form input[type="email"],
+        .enquire-form textarea,
+        .enquire-form select {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #222;
+            background: transparent;
+            font-size: 1rem;
+            padding: 8px 0 8px 0;
+            margin-bottom: 24px;
+            outline: none;
+            resize: none;
+        }
+        .enquire-form .row {
+            display: flex;
+            gap: 24px;
+        }
+        .enquire-form .row > div {
+            flex: 1;
+        }
+        .enquire-form textarea {
+            min-height: 60px;
+        }
+        .enquire-form .checkbox-group {
+            margin-bottom: 18px;
+        }
+        .enquire-form .checkbox-group label {
+            display: inline;
+            font-size: 0.95rem;
+            margin-left: 8px;
+            font-weight: 400;
+        }
+        .enquire-form .checkbox-group input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 6px;
+        }
+        .enquire-form .terms {
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+        }
+        .enquire-form .terms a {
+            color: #111;
+            text-decoration: underline;
+        }
+        .enquire-form .submit-btn {
+            margin-top: 18px;
+            padding: 10px 36px;
+            border: 1px solid #222;
+            background: #fff;
+            color: #111;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .enquire-form .submit-btn:hover {
+            background: #222;
+            color: #fff;
+        }
+        .enquire-form .gdpr-link {
+            display: block;
+            margin-top: 18px;
+            font-size: 0.95rem;
+            color: #111;
+            text-decoration: underline;
+        }
+        @media (max-width: 700px) {
+            .enquire-form .row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="enquire-container">
+        <h1>ENQUIRE</h1>
+        <p>
+            Please complete this form to receive detailed information. A Ferrari dealer will contact you very soon.<br>
+            <span style="font-size:0.95rem;">*Mandatory fields</span>
+        </p>
+        <form class="enquire-form">
+            <label for="country">Country or Region*</label>
+            <select id="country" name="country" required>
+                <option value="India">India</option>
+                <!-- Add more countries as needed -->
+            </select>
+            <div class="row">
+                <div>
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="surname">Surname*</label>
+                    <input type="text" id="surname" name="surname" required>
+                </div>
+            </div>
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" required>
+            <label for="telephone">Telephone</label>
+            <input type="text" id="telephone" name="telephone">
+            <div class="row">
+                <div>
+                    <label for="city">City*</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div>
+                    <label for="zip">Zip Code*</label>
+                    <input type="text" id="zip" name="zip" required>
+                </div>
+            </div>
+            <label for="note">Note</label>
+            <textarea id="note" name="note"></textarea>
+            <div class="checkbox-group">
+                <input type="checkbox" id="finance" name="finance">
+                <label for="finance">I WOULD LIKE TO RECEIVE MORE INFORMATION ON FINANCING OPTIONS</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">
+                    I HAVE READ AND ACCEPT<br>
+                    <a href="#">THE GENERAL TERMS OF USE OF THE SITE</a> AND
+                    <a href="#">CODE OF CONDUCT FOR REGISTERED USERS*</a>
+                </label>
+            </div>
+            <button type="submit" class="submit-btn">SUBMIT</button>
+            <a href="#" class="gdpr-link">Manage your newsletters and GDPR consent</a>
+        </form>
+    </div>
+</body>
+</html>

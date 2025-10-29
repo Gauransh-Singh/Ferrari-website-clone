@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Model Carousel</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+
+    .left-img, .right-img {
+      width: 50%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.5s ease-in-out;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.4) 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 100px;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 5rem;
+      font-weight: bold;
+      transition: opacity 0.3s ease;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 1rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      top: 30px;
+      left: 100px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-btn {
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .explore-btn {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .explore-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel">
+    <div class="left-img" id="leftImg"></div>
+    <div class="right-img" id="rightImg"></div>
+
+    <div class="overlay">
+      <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn">&#x2039;</button>
+        <button class="nav-btn" id="nextBtn">&#x203A;</button>
+      </div>
+
+      <h1 id="modelTitle">TEMERARIO</h1>
+      <h2 id="modelSlogan">YOU CAN'T HIDE WHO YOU ARE</h2>
+      <button class="explore-btn">Explore the model</button>
+    </div>
+  </div>
+
+  <script>
+    const carouselData = [
+      {
+        left: 'https://www.bing.com/images/search?view=detailV2&ccid=sucqwYMI&id=DE61C875C3B0FF2D19CE77D7BF108301FF641729&thid=OIP.sucqwYMIGVo_uxdn3jRXVQHaEK&mediaurl=https%3a%2f%2fwww.lamborghini.com%2fsites%2fit-en%2ffiles%2fDAM%2flamborghini%2ffacelift_2019%2fhomepage%2ffamilies-gallery%2fUrus_pearl_capsule_Compositing_4terzi_01.jpg&exph=1080&expw=1920&q=lamborghini+official+website+image&simid=607986753944642205&FORM=IRPRST&ck=BD0BB4CFE59315BDE5DF00C6FEF6086F&selectedIndex=1&itb=0', // Replace with your image
+        right: 'https://i.imgur.com/bu3MZzR.jpg',
+        title: 'TEMERARIO',
+        slogan: "YOU CAN'T HIDE WHO YOU ARE"
+      },
+      {
+        left: 'https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/homepage/families-gallery/2022/11_30_sterrato/family_chooser_sterrato.jpg',
+        right: 'https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/homepage/families-gallery/2022/11_30_sterrato/family_chooser_sterrato.jpg',
+        title: 'REVUELTO',
+        slogan: 'FROM NOW ON'
+      },
+      {
+        left: 'https://i.imgur.com/I9tG5N8.jpg',
+        right: 'https://i.imgur.com/TO9QmuA.jpg',
+        title: 'INVICTO',
+        slogan: 'DOMINATE THE STREETS'
+      }
+    ];
+
+    let currentIndex = 0;
+
+    const leftImg = document.getElementById('leftImg');
+    const rightImg = document.getElementById('rightImg');
+    const title = document.getElementById('modelTitle');
+    const slogan = document.getElementById('modelSlogan');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateCarousel() {
+      const item = carouselData[currentIndex];
+      leftImg.style.backgroundImage = `url('${item.left}')`;
+      rightImg.style.backgroundImage = `url('${item.right}')`;
+      title.textContent = item.title;
+      slogan.textContent = item.slogan;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + carouselData.length) % carouselData.length;
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % carouselData.length;
+      updateCarousel();
+    });
+
+    updateCarousel(); // initialize
+  </script>
+</body>
+</html>
